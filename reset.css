@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/* Reset all the "User-Agent-Stylesheet" styles except the 'display' property :
+    - inherited properties to inherit value 
+    - non inherited properties to initial value  
+*/
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+    all: unset;
+    display: revert;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Reset form elements */
+input,
+textarea,
+select {
+    all: revert;
+}
+
+/* Customize form elements */
+/* input[type="checkbox"],
+input[type="radio"] {
+  
+  &:checked {}
+  &:disabled {} 
+  &:focus {}
+}
+input[type="radio"] { border-radius:50%; } */
+/* focusstate */
+input:focus-within,
+.select:focus-within,
+textarea:focus-within {
+    box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.3), 0 0.5em 2em 0 rgba(0, 0, 0, 0.15);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline-flex;
+    vertical-align: top;
+    border: solid 0.2rem #646464;
+    width: 5rem;
+    height: 5rem;
+    padding: 0.4rem;
+    background-clip: content-box;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background-color: #8bc34b;
+}
+
+input[type="checkbox"]:checked::before,
+input[type="radio"]:checked::before {
+    content: "✔️";
+    font-size: 2rem;
+    margin: auto;
+}
+
+input[type="checkbox"]:disabled,
+input[type="radio"]:disabled {
+    filter: grayscale(1) opacity(0.3);
+}
+
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+.select {
+    position: relative;
+    width: fit-content;
+    padding: 1rem;
+    padding-inline-end: 3rem;
+    border: solid 0.2rem #646464;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.select select {
+    font-size: 1.5em;
+}
+
+.select:focus-within::after {
+    transform: rotateX(180deg);
+}
+
+.select::after {
+    content: "⬇️";
+    display: block;
+    transition: 0.3s;
+    position: absolute;
+    inset-inline-end: 0.5rem;
+    inset-block-start: 0.5rem;
+    pointer-events: none;
+    font-size: 2rem;
+    margin: auto;
+}
+
+/* html {
+    display: flex;
+    background-color: #ededed;
+} */
+
+body {
+    /* margin: auto; */
+    font-family: arial;
+    min-height: 100vh;
+    background-color: whitesmoke;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+}
